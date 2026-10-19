@@ -51,7 +51,7 @@ public class Card {
             }
         }
 
-        if (s < 5 && s > 1) {
+        if (s < 5 && s > 0) {
             suit = s;
         } else {
             suit = 0;
@@ -162,5 +162,9 @@ public class Card {
     // (If cards have the same value returns false)
     public boolean isBigger(Card other) {
         return this.value > other.getValue();
+    }
+
+    public boolean isSame(Card other) {
+        return this.value == other.getValue();
     }
 }
