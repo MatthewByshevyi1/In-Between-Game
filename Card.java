@@ -6,24 +6,72 @@ public class Card {
     // A king is 13
     // A king is 14
     private int value;
+    private String valueSymbol;
     
-    // 0 is hearts
-    // 1 is diamonds
-    // 2 is spades
-    // 3 is clubs
+    // 1 is hearts
+    // 2 is diamonds
+    // 3 is spades
+    // 4 is clubs
     private int suit;
+    private String suitSymbol;
 
+    // Assigns values to the card
+    // If incorrect values provided:
+    // - value set to 1
+    // - suit set to 0
     public Card(int v, int s) {
-        if (v > 1) {
+        if (v < 15 && v > 1) {
             value = v;
         } else {
-            value = 2;
+            value = 1;
         }
 
-        if (s > 1) {
+        if (value > 1 && value < 10) {
+            valueSymbol = "" + value;
+        }
+        else {
+            switch (value) {
+                case 10:
+                    valueSymbol = "T";
+                    break;
+                case 11:
+                    valueSymbol = "J";
+                    break;
+                case 12:
+                    valueSymbol = "Q";
+                    break;
+                case 13:
+                    valueSymbol = "K";
+                    break;
+                case 14:
+                    valueSymbol = "A";
+                    break;
+                default:
+                    valueSymbol = "?";
+            }
+        }
+
+        if (s < 5 && s > 1) {
             suit = s;
         } else {
             suit = 0;
+        }
+
+        switch (suit) {
+            case 1: 
+                suitSymbol = "♥";
+                break;
+            case 2:
+                suitSymbol = "♦";
+                break;
+            case 3:
+                suitSymbol = "♠";
+                break;
+            case 4:
+                suitSymbol = "♣";
+                break;
+            default:
+                suitSymbol = "?";
         }
     }
 
@@ -31,11 +79,12 @@ public class Card {
         return value;
     }
 
-    public int getSuitVal() {
+    public int getSuit() {
         return suit;
     }
 
-    public String getName() {
+    // Returns the value as a String representation   
+    public String getValueString() {
         switch (value){
             case 2:
                 return "Two";
@@ -68,12 +117,50 @@ public class Card {
         return null;
     }
 
-    public String getSuit() {
+    // Returns the suit as a String representation
+    public String getSuitString() {
+        switch (suit) {
+            case 1: 
+                return "Hearts";
+            case 2:
+                return "Diamonds";
+            case 3: 
+                return "Spades";
+            case 4:
+                return "Clubs";
+        }
 
         return null;
     }
 
-    public boolean isBetter(Card other) {
+    // Returns a string representation that can be printed
+    public String toString() {
+        String cardString = "_____ \n" + 
+                            "|" + suitSymbol + "  | \n" +
+                            "| " + valueSymbol + " | \n" +
+                            "|  " + suitSymbol + "| \n" +
+                            "‾‾‾‾‾\n";
+        return cardString;
+    }
+
+    // Returns an ArrayLog<String> that contains String representation of the Card
+    public ArrayLog<String> toStringArrayLog() {
+
+        ArrayLog<String> cardString = new ArrayLog<String>("Card String");
+
+        cardString.add("_____ ");
+        cardString.add("|" + suitSymbol + "  | ");
+        cardString.add("| " + valueSymbol + " | ");
+        cardString.add("|  " + suitSymbol + "| ");
+        cardString.add("‾‾‾‾‾ ");
+
+        return cardString;
+    }
+
+    // Returns a boolean based on if the Card for which this method is called 
+    // has a greater value than the other card 
+    // (If cards have the same value returns false)
+    public boolean isBigger(Card other) {
         return this.value > other.getValue();
     }
 }
