@@ -11,8 +11,11 @@ public class InBetweenGame {
 
         Scanner sc = new Scanner(System.in);
 
-        while (chips > 0 && deck.size() > 2) {
-
+        while (chips > 0) {
+            if (deck.size() < 10) {
+                deck.reset();
+            }
+            
             int numChips = 0;
             
             System.out.println("Current Chips: " + chips + "\n");
