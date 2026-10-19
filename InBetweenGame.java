@@ -56,9 +56,17 @@ public class InBetweenGame {
 
             if (one.isSame(two)) {
                 System.out.println("The cards are of the same rank.");
-                System.out.println("The round ends, and you win 2 chips.");
+                System.out.println("The round ends, and you win " + numChips + " chips.");
 
-                chips += numChips + 2;
+                chips += (numChips * 2);
+
+                System.out.println("\n----------------------------------------\n");
+                continue;
+            }
+
+            if (one.getValue()+1 == two.getValue() || two.getValue()+1 == one.getValue()) {
+                System.out.println("The cards are one rank apart.");
+                System.out.println("The round ends, and you lose " + numChips + " chips.");
 
                 System.out.println("\n----------------------------------------\n");
                 continue;
