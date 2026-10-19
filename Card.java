@@ -135,11 +135,11 @@ public class Card {
 
     // Returns a string representation that can be printed
     public String toString() {
-        String cardString = "_____ \n" + 
+        String cardString = "----- \n" + 
                             "|" + suitSymbol + "  | \n" +
                             "| " + valueSymbol + " | \n" +
                             "|  " + suitSymbol + "| \n" +
-                            "‾‾‾‾‾\n";
+                            "-----\n";
         return cardString;
     }
 
@@ -148,11 +148,11 @@ public class Card {
 
         ArrayLog<String> cardString = new ArrayLog<String>("Card String");
 
-        cardString.add("_____ ");
+        cardString.add("----- ");
         cardString.add("|" + suitSymbol + "  | ");
         cardString.add("| " + valueSymbol + " | ");
         cardString.add("|  " + suitSymbol + "| ");
-        cardString.add("‾‾‾‾‾ ");
+        cardString.add("----- ");
 
         return cardString;
     }
